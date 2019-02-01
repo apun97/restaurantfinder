@@ -1,0 +1,18 @@
+.loading-row {
+  height: 100vh;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+  border-left: transparent !important;
+  border-top: transparent !important;
+  border-right: transparent !important;
+}
+
+input[type="text"]:focus, textarea:focus, select:focus{
+  outline: none;
+}

@@ -1,0 +1,9 @@
+.categories-button-group {
+  width: 100%;
+  height: 30vh;
+  overflow: scroll;
+}
+
+.categories-button {
+  width: 75%;
+}
