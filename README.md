@@ -9,12 +9,12 @@ My friends and I always have a hard time choosing where to go eat so I decided t
 ##Tech/Frameworks Used
 ---
 **Built With**
-*React
-*[react-google-maps](https://github.com/tomchentw/react-google-maps)
-*[react-bootstrap](https://react-bootstrap.github.io/)
-*[Yelp Fusion](https://github.com/tonybadguy/yelp-fusion)
-*Express
-*Node.js
+-React
+-[react-google-maps](https://github.com/tomchentw/react-google-maps)
+-[react-bootstrap](https://react-bootstrap.github.io/)
+-[Yelp Fusion](https://github.com/tonybadguy/yelp-fusion)
+-Express
+-Node.js
 
 ##Features
 ---
@@ -24,16 +24,16 @@ Displays Google Map with marker of restaurant location
 
 ##To-do
 ---
-*Location verification
-*Ability to change location
-*Display different results if preferences remain the same
-*Randomize choice of displayed results
-*Display directions from location to restaurant
+-Location verification
+-Ability to change location
+-Display different results if preferences remain the same
+-Randomize choice of displayed results
+-Display directions from location to restaurant
 
 ##Stretch Goals
 ---
-*Create user system to allow for saving preferences
-*Store specific preference combinations in own server to decrease load time and API calls
+-Create user system to allow for saving preferences
+-Store specific preference combinations in own server to decrease load time and API calls
 
 ##Credits
 ---
