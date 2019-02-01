@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-import { GOOGLE_MAPS_API_KEY } from '../../../constraints';
-
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
