@@ -2,9 +2,11 @@
 require('dotenv').config();
 const express = require('express');
 const request = require('request');
+const path = require('path');
+const yelp = require('yelp-fusion');
+
 const app = express();
 const port = process.env.PORT || 5000;
-const yelp = require('yelp-fusion');
 
 const YELP_QUERY_URL = 'https://api.yelp.com/v3';
 const YELP_BUSINESSES = '/businesses';
@@ -12,6 +14,12 @@ const YELP_SEARCH = '/search';
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.get('/maps_api_key', (req, res) =>{
   const apikey = process.env.GOOGLE_MAPS_API_KEY;
