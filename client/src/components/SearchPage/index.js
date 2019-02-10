@@ -41,7 +41,6 @@ class SearchPage extends Component {
     const response = await fetch(`/yelp_request?origin=${origin}&price=${price}&distance=${distance}&categories=${categories}`);
     const body = await response.json();
 
-
     if (body.businesses.length < 1) {
       this.setState({
         _displayedBusinessLoaded: false,
@@ -51,10 +50,9 @@ class SearchPage extends Component {
     else if (response.status !== 200) {
       throw Error(body.message);
     }
-    else{
+    else {
       this.setBusinesses(body.businesses);
     }
-
 
     return body;
   };
