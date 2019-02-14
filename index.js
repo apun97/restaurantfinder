@@ -53,4 +53,6 @@ app.get('/yelp_request', (req, res) => {
   {res.send({ businesses });
   })
   .catch(error => console.log(error));
+
+  res.end();
 });
