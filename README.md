@@ -12,6 +12,7 @@ My friends and I always have a hard time choosing where to go eat so I decided t
 - [Yelp Fusion](https://github.com/tonybadguy/yelp-fusion)
 - Express
 - Node.js
+- Heroku
 
 ## Features
 Ability to choose location, price, location, and restaurant categories  
