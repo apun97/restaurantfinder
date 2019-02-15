@@ -21,12 +21,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-app.get('/maps_api_key', (req, res) =>{
-  const apikey = process.env.GOOGLE_MAPS_API_KEY;
-  console.log(apikey);
-  res.send({ key: `${apikey}` });
-});
-
 //Yelp API request
 app.get('/yelp_request', (req, res) => {
   const price = req.query.price;

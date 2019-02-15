@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+
+//Key not hidden because necessary to be revealed for displaying map
+const GOOGLE_MAPS_API_KEY = "AIzaSyAwa4KMEkZnwuFvCjiGFV7XZjK-uO6C_jY";
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
@@ -18,7 +20,7 @@ class MapPanel extends Component {
     super(props);
     this.state = {
       lat: props.coordinates.latitude,
-      lng: props.coordinates.longitude,
+      lng: props.coordinates.longitude
     };
   }
 
