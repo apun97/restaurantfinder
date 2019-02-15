@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+require('dotenv').config();
 
 
-//Key not hidden because necessary to be revealed for displaying map
-const GOOGLE_MAPS_API_KEY = "AIzaSyAwa4KMEkZnwuFvCjiGFV7XZjK-uO6C_jY";
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
