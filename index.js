@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 
 app.get('/maps_api_key', (req, res) =>{
   const apikey = process.env.GOOGLE_MAPS_API_KEY;
+  console.log(apikey);
   res.send({ key: `${apikey}` });
 });
 
