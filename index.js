@@ -44,17 +44,13 @@ app.get('/yelp_request', (req, res) => {
     limit: 10
   })
   .then(response => {
-    console.log("response jsoned");
     return response.jsonBody;
   })
   .then(json => {
-    console.log("response json got business");
     return json.businesses;
   })
   .then((businesses)=>
     {res.send({ businesses });
-    console.log("response sent");  
-    res.end();
   })
   .catch(error => console.log(error));
 });
