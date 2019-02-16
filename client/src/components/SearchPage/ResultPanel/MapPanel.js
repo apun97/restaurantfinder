@@ -3,7 +3,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
 require('dotenv').config();
 
 
-const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
@@ -41,10 +40,11 @@ class MapPanel extends Component {
       lng
     } = this.state;
 
+
     return(
       <MyMapComponent
         isMarkerShown
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAwa4KMEkZnwuFvCjiGFV7XZjK-uO6C_jY&v=3.exp&libraries=geometry,drawing,places`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `40vh` }} />}
         mapElement={<div style={{ height: `100%` }} />}
