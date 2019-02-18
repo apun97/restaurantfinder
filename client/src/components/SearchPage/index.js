@@ -20,7 +20,8 @@ class SearchPage extends Component {
       displayedBusiness: {},
       displayedBusinessIndex: 0,
       _displayedBusinessLoaded: false,
-      displayedCategories: ""
+      displayedCategories: "",
+      preferencesChanged: true
     };
 
     this.onPriceChange = this.onPriceChange.bind(this);
@@ -28,60 +29,88 @@ class SearchPage extends Component {
     this.onCategoryChange = this.onCategoryChange.bind(this);
     this.setBusinesses = this.setBusinesses.bind(this);
     this.callYelpAPI = this.callYelpAPI.bind(this);
+    this.setDisplayedBusiness = this.setDisplayedBusiness.bind(this);
   }
 
   // Fetches our GET route from the Express server.
   callYelpAPI = async () => {
-    const {
-      price,
-      distance,
-      categories,
-      origin
-    } = this.state
-    const response = await fetch(`/yelp_request?origin=${origin}&price=${price}&distance=${distance}&categories=${categories}`);
-    const body = await response.json();
+    if(this.state.preferencesChanged){
+      const {
+        price,
+        distance,
+        categories,
+        origin
+      } = this.state
+      const response = await fetch(`/yelp_request?origin=${origin}&price=${price}&distance=${distance}&categories=${categories}`);
+      const body = await response.json();
 
-    if (body.businesses.length < 1) {
-      this.setState({
-        _displayedBusinessLoaded: false,
-        _businessesLoaded: false
-       });
+      if (body.businesses.length < 1) {
+        this.setState({
+          _displayedBusinessLoaded: false,
+          _businessesLoaded: false
+         });
+      }
+      else if (response.status !== 200) {
+        throw Error(body.message);
+      }
+      else {
+        this.setBusinesses(body.businesses);
+        this.setState({
+          preferencesChanged: false,
+        })
+      }
     }
-    else if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    else {
-      this.setBusinesses(body.businesses);
+    else{
+      this.setDisplayedBusiness();
     }
 
-    return body;
   };
 
   onPriceChange(event){
-    this.setState({ price: event });
+    this.setState({
+      price: event,
+      preferencesChanged: true
+    });
+
   }
 
   onDistanceChange(event){
-    this.setState({ distance: event });
+    this.setState({
+      distance: event,
+      preferencesChanged: true
+    });
   }
 
   onCategoryChange(event){
-    this.setState({ categories: event});
+    this.setState({
+      categories: event,
+      preferencesChanged: true
+    });
   }
 
   setBusinesses(businesses){
     if(businesses !== null){
       this.setState({
         businesses,
-        _businessesLoaded: true,
-        displayedBusiness: businesses[0],
-        _displayedBusinessLoaded: true
       });
-      const categories = this.state.displayedBusiness.categories;
-      const categoryNames = categories.map(category => category.title);
-      const categoryNamesString = categoryNames.join(', ');
-      this.setState({ displayedCategories: categoryNamesString });
+      this.setDisplayedBusiness();
     }
+  }
+
+  setDisplayedBusiness(){
+    const { businesses } = this.state;
+    const random_value = Math.floor(Math.random() * 10);
+
+    this.setState({
+      displayedBusiness: businesses[random_value],
+      _displayedBusinessLoaded: true,
+      _businessesLoaded: true
+    });
+
+    const categories = this.state.displayedBusiness.categories;
+    const categoryNames = categories.map(category => category.title);
+    const categoryNamesString = categoryNames.join(', ');
+    this.setState({ displayedCategories: categoryNamesString });
   }
 
   render() {

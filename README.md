@@ -22,8 +22,6 @@ Displays Google Map with marker of restaurant location
 ## To-do
 - Location verification
 - Ability to change location
-- Display different results if preferences remain the same
-- Randomize choice of displayed results
 - Display directions from location to restaurant
 
 ## Stretch Goals
