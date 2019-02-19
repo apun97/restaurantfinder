@@ -61,9 +61,10 @@ class SearchPage extends Component {
       }
     }
     else{
-      this.setDisplayedBusiness();
+      if(this.state.businesses !== null){
+        this.setDisplayedBusiness();
+      }
     }
-
   };
 
   onPriceChange(event){
@@ -115,7 +116,7 @@ class SearchPage extends Component {
 
   render() {
     const {
-      _businessesLoaded ,
+      _businessesLoaded,
       displayedCategories,
       _displayedBusinessLoaded,
     } = this.state;
